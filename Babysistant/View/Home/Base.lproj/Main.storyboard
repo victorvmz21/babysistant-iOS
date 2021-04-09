@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Babysistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOV-Bj-ocT" customClass="CircularSlider" customModule="JOCircularSlider">
+                                <rect key="frame" x="10" y="92.5" width="300" height="295"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="53l-9k-r41"/>
+                                    <constraint firstAttribute="height" constant="295" id="V9j-ZC-rTN"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="textIsHidden" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="120"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="maxidotMaxColor">
+                                        <color key="value" red="0.085435070099999996" green="0.76564556360000002" blue="0.94512552019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="By7-Us-bff">
+                                <rect key="frame" x="30" y="416" width="260" height="44"/>
+                                <color key="backgroundColor" red="0.1764705882352941" green="0.80392156862745101" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="J9U-3J-aGZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Activate"/>
+                                <connections>
+                                    <action selector="activatedBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azg-Ca-Q8W"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="H69-lr-vyt">
+                                <rect key="frame" x="35" y="20" width="250" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="lsw-df-xE9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="" image="bottle"/>
+                                    <segment title="" image="diaper">
+                                        <size key="contentOffset" width="-3" height="0.0"/>
+                                    </segment>
+                                </segments>
+                                <color key="tintColor" red="0.086274509803921567" green="0.76470588235294112" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="segmentControllTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="lrH-G4-t3V"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="By7-Us-bff" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="2NH-MK-XzF"/>
+                            <constraint firstItem="aOV-Bj-ocT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9QK-oS-fRq"/>
+                            <constraint firstItem="aOV-Bj-ocT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ma1-fW-kfF"/>
+                            <constraint firstItem="H69-lr-vyt" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OqA-tN-46l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="By7-Us-bff" secondAttribute="trailing" constant="30" id="Ui4-LF-zfl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="By7-Us-bff" secondAttribute="bottom" constant="20" id="gM4-Tf-i7c"/>
+                            <constraint firstItem="H69-lr-vyt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jaD-G4-19W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnActivate" destination="By7-Us-bff" id="76u-69-kjb"/>
+                        <outlet property="sgmtControll" destination="H69-lr-vyt" id="LUe-V6-x7Q"/>
+                        <outlet property="timerSlider" destination="aOV-Bj-ocT" id="aPp-us-L87"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.875" y="123.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bottle" width="24" height="24"/>
+        <image name="diaper" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

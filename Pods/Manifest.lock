@@ -1,0 +1,16 @@
+PODS:
+  - JOCircularSlider (2.0.3)
+
+DEPENDENCIES:
+  - JOCircularSlider
+
+SPEC REPOS:
+  trunk:
+    - JOCircularSlider
+
+SPEC CHECKSUMS:
+  JOCircularSlider: c4b8cf56855ee90c92bf9cbee94af77b934aa31d
+
+PODFILE CHECKSUM: 18febef1140c30b62305855c1b763e41b73f828f
+
+COCOAPODS: 1.10.0
