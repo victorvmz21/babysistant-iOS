@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Babysistant
+
+  Created by Victor Monteiro on 4/9/21.
+  
+*/
+
+//BUTTON STATES
+"ACTIVATE_BUTTON" = "Activate";
+"UNACTIVATE_BUTTON" = "Deactivate";
+
+//NOTIFICATION CONTENT
+"BOTTLE_NOTIFICATION_TITLE" = "Time to feed your baby";
+"BOTTLE_NOTIFICATION_BODY"  = "Check if your baby is hungry.";
+
+"DIAPER_NOTIFICACTION_TITLE" = "Time to change your baby's diaper";
+"DIAPER_NOTIFICATION_BODY"   = "Check if your baby's diaper need to be changed.";

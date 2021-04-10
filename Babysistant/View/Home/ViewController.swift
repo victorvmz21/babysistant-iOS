@@ -10,19 +10,27 @@ import JOCircularSlider
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var sgmtControll: UISegmentedControl!
     @IBOutlet weak var btnActivate: UIButton!
     @IBOutlet weak var timerSlider: CircularSlider!
     
-    
     var isTimerActivated: Bool = false
     var viewModel = TimerViewModel()
-    var notificationTitle = "Time to feed your baby"
-    var notificationBody  = "check if your baby is hungry"
     var notificationTimer: TimeInterval?
     var storage = UserDefaults.standard
-
+    var notificationTitle = ""
+    var notificationBody  = ""
+    
+    //Localizable String
+    var activeButtonLocalizable   = NSLocalizedString("ACTIVATE_BUTTON", comment: "active")
+    var unactiveButtonLocalizable = NSLocalizedString("UNACTIVATE_BUTTON", comment: "unactive")
+    
+    var bottleNotificationTitle   = NSLocalizedString("BOTTLE_NOTIFICATION_TITLE", comment: "bottleTitle")
+    var bottlNotificationBody     = NSLocalizedString("BOTTLE_NOTIFICATION_BODY", comment: "bottleBody")
+    
+    var diaperNotificationTitle   = NSLocalizedString("DIAPER_NOTIFICACTION_TITLE", comment: "diaperTitle")
+    var diaperNotificaitionBody   = NSLocalizedString("DIAPER_NOTIFICATION_BODY", comment: "diaperBody")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,23 +38,27 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
     func setUI() {
         
+        UserDefaults.resetStandardUserDefaults()
+        
         btnActivate.roundAllEdges()
-        btnActivate.setTitle(storage.string(forKey: "btnTitle") ?? "Activate", for: .normal)
-    
+        btnActivate.setTitle(storage.string(forKey: "btnTitle") ?? activeButtonLocalizable, for: .normal)
+        
         viewModel.requestNotification()
         
         timerSlider.addTarget(self, action: #selector(getTimerValue(timer:)), for: .valueChanged)
         
         //retrieving from userDefauts
-        
-        notificationTitle = storage.string(forKey: "title") ?? "Time to feed your baby"
-        notificationBody = storage.string(forKey: "body") ??  "check if your baby is hungry"
-        isTimerActivated = storage.bool(forKey: "isTimerActive") 
+        notificationTitle = storage.string(forKey: "title") ?? bottleNotificationTitle
+        notificationBody = storage.string(forKey: "body") ??  bottlNotificationBody
+        isTimerActivated = storage.bool(forKey: "isTimerActive")
+        sgmtControll.setTitleColor(UIColor(named: "customBabyBlue")!)
         sgmtControll.selectedSegmentIndex = storage.integer(forKey: "sgmtIndex")
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         
     }
     
@@ -56,12 +68,13 @@ class ViewController: UIViewController {
         
     }
     
+    
     @IBAction func segmentControllTapped(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0 {
             
-            notificationTitle = "Time to feed your baby"
-            notificationBody  = "check if your baby is hungry"
+            notificationTitle = bottleNotificationTitle
+            notificationBody  = bottlNotificationBody
             
             storage.setValue(notificationTitle, forKey: "title")
             storage.setValue(notificationBody, forKey: "body")
@@ -69,8 +82,8 @@ class ViewController: UIViewController {
             
         } else {
             
-            notificationTitle = "Time to change your baby's diaper"
-            notificationBody  = "check if you baby is hungry."
+            notificationTitle = diaperNotificationTitle
+            notificationBody  = diaperNotificaitionBody
             
             storage.setValue(notificationTitle, forKey: "title")
             storage.setValue(notificationBody, forKey: "body")
@@ -88,21 +101,21 @@ class ViewController: UIViewController {
         
         if isTimerActivated {
             
-            viewModel.triggerNotification(title: notificationTitle, body: notificationBody, time: notificationTimer ?? 30.0)
+            viewModel.triggerNotification(title: notificationTitle, body: notificationBody, time: notificationTimer ?? 1.0)
             
-            sender.setTitle("Deactivate", for: .normal)
+            sender.setTitle(unactiveButtonLocalizable, for: .normal)
             storage.setValue(sender.currentTitle, forKey: "btnTitle")
             
         } else {
             
             viewModel.deactivateNotification()
-            sender.setTitle("Activate", for: .normal)
+            sender.setTitle(activeButtonLocalizable, for: .normal)
             storage.setValue(sender.currentTitle, forKey: "btnTitle")
             
         }
         
     }
-
-
+    
+    
 }
 

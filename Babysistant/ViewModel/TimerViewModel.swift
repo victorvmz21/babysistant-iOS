@@ -37,7 +37,7 @@ class TimerViewModel {
         notificationContent.title = title
         notificationContent.body = body
         notificationContent.categoryIdentifier = "alarm"
-        notificationContent.sound = .defaultCritical
+        notificationContent.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "babyCrying.mp3"))
         
         print(TimeInterval(time * 60))
         let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: time * 60 , repeats: true)
